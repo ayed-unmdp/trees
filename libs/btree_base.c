@@ -7,8 +7,8 @@
 /**************************************************************/
 /**
  * BT - Binary Tree: Árbol binario.
- * BTN - binary tree node: nodo de árbol binario.
- * SBT - Search Binary Tree: ABB - Árbol binario de búsqueda.
+ * BTN - Binary Tree Node: nodo de árbol binario.
+ * BST - Binary Search Tree: ABB - Árbol binario de búsqueda.
  * AVL - AVL Tree: Árbol AVL.
  * root: nodo raíz del árbol.
  * parent node: nodo padre.
@@ -24,25 +24,16 @@
  */
 /**************************************************************/
 
-/**
- *  Binary Tree Node Struct
- */
-#define t_elem_btree int
-
-typedef struct _btn {
-    t_elem_btree value;
-    struct _btn *left;
-    struct _btn *right;
-} btn;
+#include "btree_base.h"
 
 /**************************************************************/
 /*                     ÁRBOLES BINARIOS                       */
 /**************************************************************/
 
 /**
- * Crea un nodo de un BTN en base a un valor t_elem_btree
+ * Crea un nodo de un BTN en base a un dato BTREE_ELEM
  */
-btn* btn_new(t_elem_btree value) {
+btn* btn_new(BTREE_ELEM data) {
     /**** COMPLETAR ****/
 }
 
@@ -58,7 +49,7 @@ void btn_free(btn** node) {
  * Se busca el nodo en pre-order (debe recorrer todo el árbol no hay un criterio de ordenamiento)
  * Debe devolver la referencia a la ubicación del puntero al nodo. Si no existe, devuelve NULL
  */ 
-btn** btn_find(btn** node, t_elem_btree value, int cmp(t_elem_btree, t_elem_btree)) {
+btn** btn_find(btn** node, BTREE_ELEM data, int cmp(BTREE_ELEM, BTREE_ELEM)) {
     /**** COMPLETAR ****/
 }
 
@@ -92,31 +83,31 @@ int btn_insert(btn **node, btn *newNode) {
 }
 
 /**
- * Agrega un valor a un BT con el criterio:
+ * Agrega un dato a un BT con el criterio:
  * - Si el subárbol es nulo se agrega ahí,
  * - Si no es NULL lo agrega en el hijo con menor cantidad de nodos,
  * - Si sus hijos tienen la misma cantidad de nodos lo agrega a la izquierda.
  */
-int btn_insert_value(btn **node, int value) {
+int btn_insert_data(btn **node, int data) {
     /**** COMPLETAR ****/
 }
 
 
 /**
  * Determinar el nivel de un nodo.
- * - Recibe como entrada la raíz, un valor y una función de comparación de valores.
+ * - Recibe como entrada la raíz, un dato y una función de comparación de datos del árbol.
  */
-int _btn_level(btn *node, t_elem_btree value, int level, int cmp(t_elem_btree, t_elem_btree)) {
+int _btn_level(btn *node, BTREE_ELEM data, int level, int cmp(BTREE_ELEM, BTREE_ELEM)) {
     /**** COMPLETAR ****/
 }
 
-int btn_level(btn* root, t_elem_btree value, int cmp(t_elem_btree, t_elem_btree)) {
+int btn_level(btn* root, BTREE_ELEM data, int cmp(BTREE_ELEM, BTREE_ELEM)) {
     /**** COMPLETAR ****/
 }
 
 
 /**
- * Devuelve el valor máximo entre 2 enteros.
+ * Devuelve el dato máximo entre 2 enteros.
  * Función auxiliar utilizada en height.
  */
 int _max(int a, int b) { return (a > b) ? a : b; }
@@ -124,7 +115,7 @@ int _max(int a, int b) { return (a > b) ? a : b; }
 /**
  * Devuelve la altura de un BTN
  */
-t_elem_btree btn_height(btn *node) {
+BTREE_ELEM btn_height(btn *node) {
     int result = -1;
     /**** COMPLETAR ****/
     return result;
@@ -200,7 +191,7 @@ int _btn_print(btn *tree, int is_left, int offset, int depth, char s[20][255], v
 
 /**
  * Dibuja un árbol binario con caracteres
- * (Los valores de los nodos deben estar entre 0 y 999).
+ * (Los datos de los nodos deben enteros entre 0 y 999).
  */
 void btn_print(btn *tree, void toStr (btn*, char*)) {
     char s[20][255];
