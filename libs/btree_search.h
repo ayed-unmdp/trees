@@ -191,4 +191,4 @@ int bst_remove_data2(btn **node, BTREE_ELEM data, int cmp (BTREE_ELEM, BTREE_ELE
  * según cual sea más alto.
  * Devuelve 1 si pudo eliminarlo, o 0 si no pudo.
  */
-int bst_remove_data_smart(btn **node, int data, int cmp (BTREE_ELEM, BTREE_ELEM));
+int bst_remove_data_smart(btn **node, BTREE_ELEM data, int cmp (BTREE_ELEM, BTREE_ELEM));

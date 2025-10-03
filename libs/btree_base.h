@@ -1,5 +1,5 @@
-#ifndef _BTREE_BASE
-#define _BTREE_BASE
+#ifndef _BTREEB
+#define _BTREEB
 
 /**************************************************************/
 /*                       NOMENCLATURAS                        */
@@ -125,4 +125,4 @@ int _btn_print(btn *tree, int is_left, int offset, int depth, char s[20][255], v
  */
 void btn_print(btn *tree, void toStr (btn*, char*));
 
-#endif _BTREE_BASE
+#endif

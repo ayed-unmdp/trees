@@ -1,4 +1,4 @@
-#include "./bin/btree_base.h"
+#include "libs/btree_base.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,11 +9,11 @@
 // asume que t_elem_tree es un número entero
 void btn_intToStr(btn* node, char* str) {
     if (!node) return;    
-    sprintf(str, "(%03d)", node->value);    
+    sprintf(str, "(%03d)", node->data);    
 }
 
 // compara 2 elementos del árbol cuando son enteros
-int btn_cmp_int(t_elem_btree a, t_elem_btree b) {
+int btn_cmp_int(BTREE_ELEM a, BTREE_ELEM b) {
     return a - b;
 }
 
@@ -21,7 +21,7 @@ int btn_cmp_int(t_elem_btree a, t_elem_btree b) {
 // Asumiendo que los valores de cada nodo son únicos. 
 void btn_level_test(btn* node, void* ctx){
     btn* root = (btn*)ctx;
-    int level = btn_level(root, node->value, btn_cmp_int);
+    int level = btn_level(root, node->data, btn_cmp_int);
     char str[100];
     btn_intToStr(node,str);
     printf("%10s: level %d\n", str, level);
@@ -47,7 +47,7 @@ void btn_test_leaf(btn* node, void* ctx){
 // Y le agrega la altura del nodo. 
 void btn_intToStr_h(btn* node, char* str) {
     if (!node) return;    
-    sprintf(str, "(%03d) h=%d", node->value, btn_height(node));    
+    sprintf(str, "(%03d) h=%d", node->data, btn_height(node));    
 }
 
 // Imprime un nodo
@@ -70,15 +70,15 @@ void btn_do_print_ctx (btn* node, void* ctx){
 
 void main() {
     btn* root = NULL;
-    btn_insert_value(&root, 5);
-    btn_insert_value(&root, 6);
-    btn_insert_value(&root, 8);
-    btn_insert_value(&root, 10);
-    btn_insert_value(&root, 11);
-    btn_insert_value(&root, 123);
-    btn_insert_value(&root, 124);
-    btn_insert_value(&root, 225);
-    btn_insert_value(&root, 20);
+    btn_insert_data(&root, 5);
+    btn_insert_data(&root, 6);
+    btn_insert_data(&root, 8);
+    btn_insert_data(&root, 10);
+    btn_insert_data(&root, 11);
+    btn_insert_data(&root, 123);
+    btn_insert_data(&root, 124);
+    btn_insert_data(&root, 225);
+    btn_insert_data(&root, 20);
 
     
     printf("\n%10s: \n", "Árbol");
